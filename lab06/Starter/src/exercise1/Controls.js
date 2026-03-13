@@ -6,7 +6,8 @@ function Controls({
   onSortByIdClick,
   onViewToggleClick,
 }) {
-  const [deleteId, setDeleteId] = useState('');
+  const [deleteId, setDeleteId] = useState(0);
+
 
   return (
     <div className="controls-row">
@@ -16,10 +17,12 @@ function Controls({
           id="delete-id-input"
           type="number"
           value={deleteId}
+          onChange={(e) => setDeleteId(e.target.value)}
           // add an onChange handler that updates deleteId with setDeleteId
         />
         <button
           className="btn btn-danger"
+          onClick={() => onDeleteClick(deleteId)}
           // add an onClick handler that calls onDeleteClick(deleteId)
         >
           Delete
@@ -29,18 +32,21 @@ function Controls({
       <div className="other-controls">
         <button
           className="btn"
+          onClick={onSortByGroupClick}
           // add an onClick handler that calls onSortByGroupClick
         >
           Sort by Group
         </button>
         <button
           className="btn"
+          onClick={onSortByIdClick}
           // add an onClick handler that calls onSortByIdClick
         >
           Sort by ID
         </button>
         <button
           className="btn"
+            onClick={onViewToggleClick}
           // add an onClick handler that calls onViewToggleClick
         >
           Grid / List View
